@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
-export const encrypt = async (password) => {
-  return await bcrypt.hash(password, saltRounds);
+export const encrypt = async (value) => {
+  return await bcrypt.hash(value, saltRounds);
 };
 
 export const decrypt = async (password, hash) => {

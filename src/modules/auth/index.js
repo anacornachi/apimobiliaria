@@ -12,6 +12,14 @@ const params = {
 
 export default () => {
   const strategy = new Strategy(params, (payload, done) => {
+    console.log(payload);
+    const user = User.findByPk(payload.id);
+
+    if (user) {
+      return done(null, {id: user.id});
+    } else {
+      return done(new Error('User not found'), null);
+    }
     // buscar um usuario no banco com o id vindo do payload
     // e tiver usuario, reotrna o id do usuario
     // se der erro é porque nao existe o usuario
