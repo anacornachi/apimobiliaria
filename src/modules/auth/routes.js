@@ -8,7 +8,6 @@ const auth = authMiddleware();
 export const authRoutes = (app) => {
   app.get('/user', auth.authenticate(), async (req, res) => {
     const decoded = jwt.decode(req);
-
     const data = await User.findByPk(decoded.id);
     const {password, ...user} = data.dataValues;
     res.json(user);

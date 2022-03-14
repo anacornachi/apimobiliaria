@@ -1,6 +1,8 @@
 import sequelize from '../db/connection.js';
 import {v4 as uuidv4} from 'uuid';
 import RealEstate from '../models/RealEstate.model.js';
+import User from '../models/User.model.js';
+import {jwt} from '../utils/token.js';
 
 export default (app) => {
   app.get('/realestate', async (req, res) => {
@@ -9,32 +11,51 @@ export default (app) => {
   });
 
   app.post('/realestate', async (req, res) => {
-    const {
-      name,
-      id,
-      email,
-      city,
-      cnpj,
-      properties,
-      broker,
-      initialProperties,
-      initialBroker,
-      userId,
-    } = req.body;
+    const realEstateExists = await RealEstate.findOne({
+      where: {
+        cnpj: req.body.cnpj,
+      },
+    });
 
-    const imobiliaria = {
-      name: name,
-      email: email,
-      city: city,
-      cnpj: cnpj,
-      properties: properties,
-      broker: broker,
-      initialProperties: initialProperties,
-      initialBroker: initialBroker,
-      userId: uuidv4(),
-    };
-    await RealEstate.create(imobiliaria);
-    res.json({status: 200});
+    if (realEstateExists) {
+      return res.status(400).json({
+        message: 'Real Estate already exists',
+      });
+    } else {
+      const admin = await User.findOne({
+        where: {
+          cpf: req.body.adminCpf,
+        },
+      });
+
+      const {id, firstName, lastName, cpf} = admin.dataValues;
+      const {adminCpf, ...realEstate} = req.body;
+
+      const createdRealEstate = await RealEstate.create({
+        ...realEstate,
+        adminId: adminCpf,
+      });
+
+      const payload = {
+        id: createdRealEstate.dataValues.id,
+        userId: id,
+      };
+      const token = jwt.encode(payload);
+
+      const {name, cnpj} = createdRealEstate.dataValues;
+
+      res.json({
+        realestate: {name, cnpj},
+        administrator: {
+          firstName,
+          lastName,
+          cpf,
+        },
+        token,
+      });
+    }
+
+    // se puder cadastrar -> vincular o user id ao usuario cpf cadastrado como role imobiliaria
   });
 
   app.put('/realestate', (req, res) => {
@@ -49,3 +70,10 @@ export default (app) => {
     res.json({status: 'delete!'});
   });
 };
+
+// # imobiliaria
+// get -> todas as imobiliarias que tenho no banco
+// get -> de uma imobiliaria só com um parametro /:id
+// post -> criacao de imobiliaria (dados do form)
+// update -> atualizar dados da imobiliaria
+// delete -> deletar a conta (com parametro /:id)
