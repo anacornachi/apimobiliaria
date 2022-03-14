@@ -1,5 +1,6 @@
 import passport from 'passport';
 import passportJWT from 'passport-jwt';
+import User from '../../models/User.model.js';
 import config from './config.js';
 
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -11,18 +12,14 @@ const params = {
 };
 
 export default () => {
-  const strategy = new Strategy(params, (payload, done) => {
-    console.log(payload);
-    const user = User.findByPk(payload.id);
+  const strategy = new Strategy(params, async (payload, done) => {
+    const user = await User.findByPk(payload.id);
 
     if (user) {
       return done(null, {id: user.id});
     } else {
       return done(new Error('User not found'), null);
     }
-    // buscar um usuario no banco com o id vindo do payload
-    // e tiver usuario, reotrna o id do usuario
-    // se der erro é porque nao existe o usuario
   });
   passport.use(strategy);
   return {
