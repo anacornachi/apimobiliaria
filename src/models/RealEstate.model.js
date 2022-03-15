@@ -52,8 +52,23 @@ const RealEstate = sequelize.define(
       allowNull: false,
       require: true,
     },
-    userId: {
-      type: DataTypes.UUID,
+    adminCpf: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      require: true,
+    },
+    adminName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      require: true,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      require: true,
+    },
+    password: {
+      type: DataTypes.STRING,
       allowNull: false,
       require: true,
     },
@@ -62,8 +77,5 @@ const RealEstate = sequelize.define(
     tableName: 'realEstates',
   }
 );
-
-RealEstate.belongsTo(User);
-User.hasOne(RealEstate);
 
 export default RealEstate;

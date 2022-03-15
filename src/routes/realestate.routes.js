@@ -1,16 +1,31 @@
-import sequelize from '../db/connection.js';
-import {v4 as uuidv4} from 'uuid';
 import RealEstate from '../models/RealEstate.model.js';
-import User from '../models/User.model.js';
+import {encrypt} from '../utils/encrypt.js';
 import {jwt} from '../utils/token.js';
 
 export default (app) => {
   app.get('/realestate', async (req, res) => {
     const data = await RealEstate.findAll();
-    res.json({status: 200, data: data});
+    res.status(200).json({data: data});
   });
 
-  app.post('/realestate', async (req, res) => {
+  app.get('/realestate/:cnpj', async (req, res) => {
+    const {cnpj} = req.params;
+
+    const realEstate = await RealEstate.findOne({
+      where: {
+        cnpj: cnpj,
+      },
+    });
+
+    if (realEstate) {
+      const {password, ...data} = realEstate.dataValues;
+      res.status(200).json({data});
+    } else {
+      res.status(404).json({message: 'Real Estate not found'});
+    }
+  });
+
+  app.post('/register/realestate', async (req, res) => {
     const realEstateExists = await RealEstate.findOne({
       where: {
         cnpj: req.body.cnpj,
@@ -22,58 +37,62 @@ export default (app) => {
         message: 'Real Estate already exists',
       });
     } else {
-      const admin = await User.findOne({
-        where: {
-          cpf: req.body.adminCpf,
-        },
-      });
-
-      const {id, firstName, lastName, cpf} = admin.dataValues;
-      const {adminCpf, ...realEstate} = req.body;
-
+      const {password, ...data} = req.body;
+      const encodedPassword = await encrypt(password);
       const createdRealEstate = await RealEstate.create({
-        ...realEstate,
-        adminId: adminCpf,
+        password: encodedPassword,
+        ...data,
       });
 
       const payload = {
         id: createdRealEstate.dataValues.id,
-        userId: id,
+        role: createdRealEstate.dataValues.role,
       };
       const token = jwt.encode(payload);
 
-      const {name, cnpj} = createdRealEstate.dataValues;
+      const {name, cnpj, adminCpf, adminName} = createdRealEstate.dataValues;
 
       res.json({
         realestate: {name, cnpj},
         administrator: {
-          firstName,
-          lastName,
-          cpf,
+          adminCpf,
+          adminName,
         },
         token,
       });
     }
-
-    // se puder cadastrar -> vincular o user id ao usuario cpf cadastrado como role imobiliaria
   });
 
-  app.put('/realestate', (req, res) => {
-    res.json({status: 'put!'});
+  app.put('/realestate/:cnpj', async (req, res) => {
+    const {cnpj} = req.params;
+    const data = req.body;
+
+    const realEstate = await RealEstate.findOne({
+      where: {
+        cnpj: cnpj,
+      },
+    });
+
+    if (realEstate) {
+      const updatedData = await RealEstate.update(data, {where: {cnpj: cnpj}});
+      res.status(200).json({status: 'Update completed successfully'});
+    } else {
+      res.status(400).json({message: 'Real Estate not found'});
+    }
   });
 
-  app.patch('/realestate', (req, res) => {
-    res.json({status: 'patch!'});
+  app.patch('/realestate/:cnpj', async (req, res) => {
+    const {cnpj} = req.params;
+    const data = req.body;
+
+    const updatedData = await RealEstate.update(data, {where: {cnpj: cnpj}});
+    res.status(200).json({status: 'Update completed successfully'});
   });
 
-  app.delete('/realestate', (req, res) => {
-    res.json({status: 'delete!'});
+  app.delete('/realestate/:cnpj', async (req, res) => {
+    const {cnpj} = req.params;
+
+    await RealEstate.destroy({where: {cnpj: cnpj}});
+    res.status(200).json({status: 'delete!'});
   });
 };
-
-// # imobiliaria
-// get -> todas as imobiliarias que tenho no banco
-// get -> de uma imobiliaria só com um parametro /:id
-// post -> criacao de imobiliaria (dados do form)
-// update -> atualizar dados da imobiliaria
-// delete -> deletar a conta (com parametro /:id)
