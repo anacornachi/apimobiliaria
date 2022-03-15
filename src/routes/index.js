@@ -1,5 +1,6 @@
-import realEstateRoutes from './realestate.routes.js';
-import {authRoutes} from '../modules/auth/routes.js';
+import {authRoutes} from '../modules/auth/auth.routes.js';
+import {RealEstateRoutes} from './realestate.routes.js';
+import {userRoutes} from './user.routes.js';
 
 export default (app) => {
   app.get('/', (req, res) => {
@@ -7,5 +8,6 @@ export default (app) => {
   });
 
   authRoutes(app);
-  realEstateRoutes(app);
+  RealEstateRoutes(app);
+  userRoutes(app);
 };

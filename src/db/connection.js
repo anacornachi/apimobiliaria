@@ -12,9 +12,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 
 try {
   sequelize.authenticate();
-  console.log('Banco conectado');
+  console.log('Connected database');
 } catch (error) {
-  console.log(`Não foi possível conectar: ${err}`);
+  console.log(`Could not connect: ${error}`);
 }
 
 export default sequelize;

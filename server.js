@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 import sequelize from './src/db/connection.js';
 import app from './src/config/app.js';
-import express from 'express';
 import routes from './src/routes/index.js';
 
 dotenv.config({
