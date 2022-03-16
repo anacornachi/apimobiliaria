@@ -1,5 +1,5 @@
 import jwt_simple from 'jwt-simple';
-import config from '../modules/auth/auth.config.js';
+import config from '../middlewares/auth/auth.config.js';
 
 const decode = (req) => {
   const token = req.headers.authorization.split(' ')[1];

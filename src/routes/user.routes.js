@@ -1,5 +1,5 @@
 import {userController} from '../controllers/User.controller.js';
-import authMiddleware from '../modules/auth/index.js';
+import authMiddleware from '../middlewares/auth/index.js';
 
 const auth = authMiddleware();
 

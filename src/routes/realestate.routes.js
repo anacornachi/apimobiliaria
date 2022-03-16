@@ -1,5 +1,5 @@
 import {realEstateController} from '../controllers/RealEstate.controller.js';
-import updateSchema from '../utils/updateSchema.validator.js';
+import updateSchema from '../middlewares/validators/updateSchema.validator.js';
 
 export const RealEstateRoutes = (app) => {
   app.get('/realestate', realEstateController.getAll);

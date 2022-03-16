@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import authMiddleware from '../modules/auth/index.js';
+import authMiddleware from '../middlewares/auth/index.js';
 
 const auth = authMiddleware();
 
