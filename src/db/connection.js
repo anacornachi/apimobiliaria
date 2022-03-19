@@ -1,5 +1,5 @@
-import {Sequelize} from 'sequelize';
-import 'dotenv/config';
+require('dotenv/config');
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
@@ -18,4 +18,4 @@ try {
   console.log(`Could not connect: ${error}`);
 }
 
-export default sequelize;
+module.exports = sequelize;

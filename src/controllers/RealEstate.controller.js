@@ -1,6 +1,6 @@
-import RealEstate from '../models/RealEstate.model.js';
-import {encrypt} from '../utils/encrypt.utils.js';
-import {jwt} from '../utils/token.utils.js';
+const RealEstate = require('../models/RealEstate.model.js');
+const {encrypt, decrypt} = require('../utils/encrypt.utils.js');
+const jwt = require('../utils/token.utils.js');
 
 const getAll = async (req, res) => {
   const data = await RealEstate.findAll();
@@ -129,7 +129,7 @@ const deleteByCnpj = async (req, res) => {
   }
 };
 
-export const realEstateController = {
+module.exports = realEstateController = {
   getAll,
   getByCNPJ,
   create,

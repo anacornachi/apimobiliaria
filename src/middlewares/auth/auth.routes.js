@@ -1,8 +1,10 @@
-import authMiddleware from './index.js';
-import {AuthController} from '../../controllers/Auth.controller.js';
+const authMiddleware = require('./index.js');
+const AuthController = require('../../controllers/Auth.controller.js');
 
 const auth = authMiddleware();
 
-export const authRoutes = (app) => {
+const authRoutes = (app) => {
   app.post('/login', AuthController.signIn);
 };
+
+module.exports = authRoutes;

@@ -1,4 +1,4 @@
-import Joi from 'joi';
+const Joi = require('joi');
 
 function validateRequest(req, next, schema) {
   const options = {
@@ -27,4 +27,4 @@ function updateSchema(req, res, next) {
   validateRequest(req, next, schema);
 }
 
-export default updateSchema;
+module.exports = updateSchema;

@@ -1,7 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import authMiddleware from '../middlewares/auth/index.js';
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const authMiddleware = require('../middlewares/auth/index.js');
 
 const auth = authMiddleware();
 
@@ -17,4 +17,4 @@ app.use(
   })
 );
 
-export default app;
+module.exports = app;

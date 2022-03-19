@@ -1,20 +1,20 @@
-import {readdirSync} from 'fs';
-import {basename, join} from 'path';
-import Sequelize from 'sequelize';
-import config from '../../config/database.js';
+const {readdirSync} = require('fs');
+const Sequelize = require('sequelize');
+const config = require('../../config/database.js');
+
+const sequelize = new Sequelize(config);
 
 const db = {};
-const sequelize = new Sequelize(config);
 
 readdirSync(__dirname)
   .filter(
     (file) =>
       file.indexOf('.') !== 0 &&
-      file !== basename(__filename) &&
+      file !== path.basename(__filename) &&
       file.slice(-3) === '.js'
   )
   .forEach((file) => {
-    const model = sequelize.import(join(__dirname, file));
+    const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 

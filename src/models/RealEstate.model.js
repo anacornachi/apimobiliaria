@@ -1,5 +1,5 @@
-import {DataTypes} from 'sequelize';
-import sequelize from '../db/connection.js';
+const {DataTypes} = require('sequelize');
+const sequelize = require('../db/connection.js');
 
 const RealEstate = sequelize.define(
   'realEstate',
@@ -77,4 +77,4 @@ const RealEstate = sequelize.define(
   }
 );
 
-export default RealEstate;
+module.exports = RealEstate;

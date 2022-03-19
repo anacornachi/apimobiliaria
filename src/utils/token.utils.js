@@ -1,5 +1,5 @@
-import jwt_simple from 'jwt-simple';
-import config from '../middlewares/auth/auth.config.js';
+const jwt_simple = require('jwt-simple');
+const config = require('../middlewares/auth/auth.config.js');
 
 const decode = (req) => {
   const token = req.headers.authorization.split(' ')[1];
@@ -10,7 +10,7 @@ const encode = (payload) => {
   return jwt_simple.encode(payload, config.jwtSecret);
 };
 
-export const jwt = {
+module.exports = jwt = {
   decode,
   encode,
 };

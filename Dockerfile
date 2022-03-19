@@ -13,5 +13,6 @@ EXPOSE 3001
 RUN npm uninstall bcrypt
 
 RUN npm install bcrypt
+
  
 CMD ["npm", "run", "dev"]

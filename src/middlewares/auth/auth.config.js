@@ -1,10 +1,10 @@
-import * as dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-export default {
+module.exports = {
   jwtSecret: process.env.AUTH_SECRET,
   jwtSession: {session: false},
 };

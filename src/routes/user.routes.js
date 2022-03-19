@@ -1,10 +1,12 @@
-import {userController} from '../controllers/User.controller.js';
-import authMiddleware from '../middlewares/auth/index.js';
+const userController = require('../controllers/User.controller.js');
+const authMiddleware = require('../middlewares/auth/index.js');
 
 const auth = authMiddleware();
 
-export const userRoutes = (app) => {
+const userRoutes = (app) => {
   app.get('/user', auth.authenticate(), userController.getUser);
 
   app.post('/register', userController.register);
 };
+
+module.exports = userRoutes;

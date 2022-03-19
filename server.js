@@ -1,7 +1,7 @@
-import * as dotenv from 'dotenv';
-import sequelize from './src/db/connection.js';
-import app from './src/config/app.js';
-import routes from './src/routes/index.js';
+const dotenv = require('dotenv');
+const app = require('./src/config/app.js');
+const routes = require('./src/routes/index.js');
+const sequelize = require('./src/db/connection.js');
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,

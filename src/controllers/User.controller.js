@@ -1,6 +1,6 @@
-import User from '../models/User.model.js';
-import {encrypt} from '../utils/encrypt.utils.js';
-import {jwt} from '../utils/token.utils.js';
+const User = require('../models/User.model.js');
+const {encrypt, decrypt} = require('../utils/encrypt.utils.js');
+const jwt = require('../utils/token.utils.js');
 
 const getUser = async (req, res) => {
   const decoded = jwt.decode(req);
@@ -37,7 +37,7 @@ const register = async (req, res) => {
   }
 };
 
-export const userController = {
+module.exports = userController = {
   getUser,
   register,
 };

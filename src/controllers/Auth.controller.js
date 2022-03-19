@@ -1,6 +1,6 @@
-import User from '../models/User.model.js';
-import {decrypt} from '../utils/encrypt.utils.js';
-import {jwt} from '../utils/token.utils.js';
+const User = require('../models/User.model.js');
+const {decrypt} = require('../utils/encrypt.utils.js');
+const {jwt} = require('../utils/token.utils.js');
 
 const signIn = async (req, res) => {
   const {email, password} = req.body;
@@ -28,6 +28,6 @@ const signIn = async (req, res) => {
   }
 };
 
-export const AuthController = {
+module.exports = AuthController = {
   signIn,
 };

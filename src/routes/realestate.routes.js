@@ -1,7 +1,7 @@
-import {realEstateController} from '../controllers/RealEstate.controller.js';
-import updateSchema from '../middlewares/validators/updateSchema.validator.js';
+const realEstateController = require('../controllers/RealEstate.controller.js');
+const updateSchema = require('../middlewares/validators/updateSchema.validator.js');
 
-export const RealEstateRoutes = (app) => {
+const RealEstateRoutes = (app) => {
   app.get('/realestate', realEstateController.getAll);
 
   app.get('/realestate/:cnpj', realEstateController.getByCNPJ);
@@ -14,3 +14,5 @@ export const RealEstateRoutes = (app) => {
 
   app.delete('/realestate/:cnpj', realEstateController.deleteByCnpj);
 };
+
+module.exports = RealEstateRoutes;
