@@ -14,5 +14,6 @@ RUN npm uninstall bcrypt
 
 RUN npm install bcrypt
 
- 
-CMD ["npm", "run", "dev"]
+COPY entrypoint.sh entrypoint.sh
+
+CMD sh ./entrypoint.sh

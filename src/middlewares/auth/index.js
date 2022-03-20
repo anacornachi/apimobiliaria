@@ -1,6 +1,6 @@
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
-const User = require('../../models/User.model.js');
+const RealEstate = require('../../models/RealEstate.model.js');
 const config = require('./auth.config.js');
 
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -13,7 +13,7 @@ const params = {
 
 module.exports = () => {
   const strategy = new Strategy(params, async (payload, done) => {
-    const user = await User.findByPk(payload.id);
+    const user = await RealEstate.findByPk(payload.id);
 
     if (user) {
       return done(null, {id: user.id});

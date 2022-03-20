@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-npx sequelize-cli db:seed:all --url 'postgres://root:root@localhost:5432/apimobiliaria'
+npx sequelize-cli db:seed:all & 
+
+npm run start

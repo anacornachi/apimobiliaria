@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "seeders": "sh ./entrypoint.sh",
+    "dev": " nodemon server.js",
     "start": "node server.js"
   },
   "author": "Ana Cornachi",

@@ -65,6 +65,7 @@ const RealEstate = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       require: true,
+      defaultValue: 'imobiliaria',
     },
     password: {
       type: DataTypes.STRING,
