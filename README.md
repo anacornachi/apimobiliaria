@@ -4,12 +4,12 @@ Esse projeto foi desenvolvido como método de avaliação no curso de Desenvolvi
 Resilia Educação. Foi desenvolvido um CRUD utilizando Node.js e Express, Sequelize como ORM e Docker para
 virtualização do banco de dados PostgreSQL.
 
-## Requerimentos
+## 🚧 Requerimentos
 
-Docker 20+
-Node.js 16+
+- Docker 20+
+- Node.js 16+
 
-## Rode localmente
+## 🎲 Rodando localmente
 
 Clone o projeto
 
@@ -41,7 +41,7 @@ Para finalizar e remover os containers em execução, rode
   docker-compose down
 ```
 
-## Referência de API
+## 🧩 Referências de API
 
 #### Retorna todas as imobiliárias cadastradas
 
@@ -95,13 +95,13 @@ Parametros referentes a imobiliária necessários no corpo da requisição:
 
 ```
 {
-  "name": "",
-	"city": "",
-	"cnpj": "",
-  "email": "",
-	"adminCpf": "",
-  "adminName": "",
-	"password": ""
+    "name": "",
+    "city": "",
+    "cnpj": "",
+    "email": "",
+    "adminCpf": "",
+    "adminName": "",
+    "password": ""
 }
 ```
 
@@ -119,13 +119,13 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 
 ```
 {
-  "name": "",
-	"city": "",
-	"cnpj": "",
-  "email": "",
-	"adminCpf": "",
-  "adminName": "",
-	"password": ""
+    "name": "",
+    "city": "",
+    "cnpj": "",
+    "email": "",
+    "adminCpf": "",
+    "adminName": "",
+    "password": ""
 }
 ```
 
@@ -139,7 +139,7 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 | :-------- | :------- | :--------------------------------- |
 | `cnpj`    | `string` | **Requerido**. CNPJ da imobiliária |
 
-## Tecnologias
+## 🔎 Tecnologias
 
 **Server:**
 
@@ -148,11 +148,9 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 - Sequelize
 - Docker
 - Docker Compose
-- Cors
-- Dotenv
 - Passport | Passport-JWT
 
-## Rodando testes
+## 🃏 Rodando testes
 
 Para rodar testes, rode o comando
 
@@ -160,10 +158,10 @@ Para rodar testes, rode o comando
   npm run test
 ```
 
-## Feedback
+## 🗣 Feedback
 
 Se tiver algum feedback, entre em contato.
 
 #
 
-Feito com 💛 por Ana Cornachi
+<p align="center">Feito com 💛 por Ana Cornachi</p>
