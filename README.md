@@ -4,6 +4,11 @@ Esse projeto foi desenvolvido como método de avaliação no curso de Desenvolvi
 Resilia Educação. Foi desenvolvido um CRUD utilizando Node.js e Express, Sequelize como ORM e Docker para
 virtualização do banco de dados PostgreSQL.
 
+## Requerimentos
+
+Docker 20+
+Node.js 16+
+
 ## Rode localmente
 
 Clone o projeto
@@ -36,14 +41,6 @@ Para finalizar e remover os containers em execução, rode
   docker-compose down
 ```
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
-
 ## Referência de API
 
 #### Retorna todas as imobiliárias cadastradas
@@ -69,18 +66,6 @@ To run this project, you will need to add the following environment variables to
 ```
 
 Parametros referentes a imobiliária necessários no corpo da requisição:
-
-| Parametro           | Tipo     | Descrição                                                        |
-| :------------------ | :------- | :--------------------------------------------------------------- |
-| `name`              | `string` | **Requerido**. Nome da imobiliária                               |
-| `city`              | `string` | **Requerido**. Cidade da imobiliária                             |
-| `cnpj`              | `string` | **Requerido**. CNPJ da imobiliária                               |
-| `email`             | `string` | **Requerido**. Email da imobiliária                              |
-| `initialBroker`     | `string` | **Requerido**. Quantidade inicial de corretores da imobiliária   |
-| `initialProperties` | `string` | **Requerido**. Quantidade inicial de propriedades da imobiliária |
-| `adminCpf`          | `string` | **Requerido**. CPF do responsável                                |
-| `adminName`         | `string` | **Requerido**. Nome do responsável                               |
-| `password`          | `string` | **Requerido**. Senha de acesso da imobiliaria                    |
 
 ```
 {
@@ -110,12 +95,12 @@ Parametros referentes a imobiliária necessários no corpo da requisição:
 
 ```
 {
-    "name": "",
+  "name": "",
 	"city": "",
 	"cnpj": "",
-    "email": "",
+  "email": "",
 	"adminCpf": "",
-    "adminName": "",
+  "adminName": "",
 	"password": ""
 }
 ```
@@ -134,12 +119,12 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 
 ```
 {
-    "name": "",
+  "name": "",
 	"city": "",
 	"cnpj": "",
-    "email": "",
+  "email": "",
 	"adminCpf": "",
-    "adminName": "",
+  "adminName": "",
 	"password": ""
 }
 ```
@@ -177,8 +162,8 @@ Para rodar testes, rode o comando
 
 ## Feedback
 
-If you have any feedback, please reach out to us at fake@fake.com
+Se tiver algum feedback, entre em contato.
 
 #
 
-Feito com amor por Ana Cornachi
+Feito com 💛 por Ana Cornachi
