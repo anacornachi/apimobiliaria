@@ -29,7 +29,9 @@ Instale as dependencias
   npm install
 ```
 
-Inicialize o banco de dados localmente e inicie o servidor e popule o banco com algumas informações
+Inicialize o banco de dados localmente e inicie o servidor e popule o banco com algumas informações.
+
+O servidor estará disponível no localhost:3001
 
 ```bash
   docker-compose up
@@ -138,6 +140,14 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 | Parametro | Tipo     | Descrição                          |
 | :-------- | :------- | :--------------------------------- |
 | `cnpj`    | `string` | **Requerido**. CNPJ da imobiliária |
+
+<br>
+
+## 🔗 Demo online
+
+https://apimobiliaria-resilia.herokuapp.com/
+
+<br>
 
 ## 🔎 Tecnologias
 
