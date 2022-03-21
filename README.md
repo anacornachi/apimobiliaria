@@ -150,14 +150,6 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 - Docker Compose
 - Passport | Passport-JWT
 
-## 🃏 Rodando testes
-
-Para rodar testes, rode o comando
-
-```bash
-  npm run test
-```
-
 ## 🗣 Feedback
 
 Se tiver algum feedback, entre em contato.
