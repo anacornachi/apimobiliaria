@@ -29,7 +29,7 @@ Instale as dependencias
   npm install
 ```
 
-Inicialize o banco de dados localmente e inicie o servidor e popule o banco com algumas informações.
+Inicialize o banco de dados localmente, inicie o servidor e popule o banco com algumas informações.
 
 O servidor estará disponível no localhost:3001
 
@@ -141,7 +141,7 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 | :-------- | :------- | :--------------------------------- |
 | `cnpj`    | `string` | **Requerido**. CNPJ da imobiliária |
 
-## <a href='https://apimobiliaria-resilia.herokuapp.com/' target="_blank">🔗 Demo online</a>
+## <a href='https://apimobiliaria-resilia.herokuapp.com/'>🔗 Demo online</a>
 
 ## 🔎 Tecnologias
 
