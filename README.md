@@ -141,13 +141,7 @@ Podem ser utilizados 1 (um) ou mais dos parametros abaixo para atualização:
 | :-------- | :------- | :--------------------------------- |
 | `cnpj`    | `string` | **Requerido**. CNPJ da imobiliária |
 
-<br>
-
-## 🔗 Demo online
-
-https://apimobiliaria-resilia.herokuapp.com/
-
-<br>
+## <a href='https://apimobiliaria-resilia.herokuapp.com/' target="_blank">🔗 Demo online</a>
 
 ## 🔎 Tecnologias
 
