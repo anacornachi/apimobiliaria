@@ -23,12 +23,6 @@ Acesse o diretório
   cd apimobiliaria
 ```
 
-Instale as dependencias
-
-```bash
-  npm install
-```
-
 Inicialize o banco de dados localmente, inicie o servidor e popule o banco com algumas informações.
 
 O servidor estará disponível no localhost:3001

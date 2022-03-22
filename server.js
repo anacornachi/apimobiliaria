@@ -9,17 +9,10 @@ let dbIsReady = false;
 
 const connectDb = async () => {
   try {
-    console.log(
-      'Trying to start sequelize at',
-      new Date().toLocaleTimeString()
-    );
     await sequelize.authenticate();
-
     console.log('Database is connected');
     dbIsReady = true;
-  } catch {
-    console.log('Database is not able to connect, trying again...');
-  }
+  } catch {}
 };
 
 const startServer = async () => {
@@ -28,12 +21,6 @@ const startServer = async () => {
   while (!dbIsReady) {
     await connectDb();
   }
-  // const tryConnectDB = setInterval(async () => {
-  //   await connectDb();
-  //   if (dbIsReady) {
-  //     clearInterval(tryConnectDB);
-  //   }
-  // }, 1000);
 
   if (dbIsReady) {
     try {
