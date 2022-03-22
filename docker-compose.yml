@@ -8,9 +8,9 @@ services:
     container_name: apimobiliaria
     image: postgres:latest
     ports:
-      - '5432:5432'
+      - ${DB_PORT}:${DB_PORT}
     expose:
-      - 5432
+      - ${DB_PORT}
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     environment:
@@ -26,4 +26,4 @@ services:
     env_file:
       - .env
     ports:
-      - 3001:3001
+      - ${PORT}:${PORT}

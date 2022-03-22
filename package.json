@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "seeders": "sh ./entrypoint.sh",
     "dev": " nodemon server.js",
+    "seeders": "sh ./entrypoint.sh",
     "start": "node server.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "restart": "docker-compose down && docker system prune -a -f && rm -rf pgdata && docker volume rm apimobiliaria_pgdata && docker-compose up"
   },
   "author": "Ana Cornachi",
   "license": "ISC",
