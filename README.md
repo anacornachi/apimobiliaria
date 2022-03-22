@@ -24,9 +24,8 @@ Acesse o diretório
   cd apimobiliaria
 ```
 
-Inicialize o banco de dados localmente, inicie o servidor e popule o banco com algumas informações.
+Inicialize o banco de dados localmente e inicie o servidor no localhost:3001
 
-O servidor estará disponível no localhost:3001
 
 ```bash
   docker-compose up
