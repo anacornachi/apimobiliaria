@@ -9,8 +9,16 @@ dotenv.config({
 
 const port = process.env.PORT || 3000;
 
-routes(app);
-
-app.listen(port, () => {
-  console.log('Server running on http://localhost:' + port);
-});
+try {
+  sequelize.authenticate().then(() => {
+    sequelize.sync().then(() => {
+      console.log('Database is sync');
+      routes(app);
+      app.listen(port, () => {
+        console.log('Server running on http://localhost:' + port);
+      });
+    });
+  });
+} catch (error) {
+  console.log(error);
+}
