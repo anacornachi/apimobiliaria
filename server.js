@@ -11,11 +11,6 @@ const port = process.env.PORT || 3000;
 
 routes(app);
 
-sequelize
-  .sync()
-  .then(() => {
-    app.listen(port, () => {
-      console.log('Server running on http://localhost:' + port);
-    });
-  })
-  .catch((error) => console.log(error));
+app.listen(port, () => {
+  console.log('Server running on http://localhost:' + port);
+});

@@ -12,8 +12,11 @@ const sequelize = new Sequelize(
 );
 
 try {
-  sequelize.authenticate();
-  console.log('Connected database');
+  setTimeout(() => {
+    sequelize.authenticate().then(() => {
+      console.log('Connected database');
+    });
+  }, 3000);
 } catch (error) {
   console.log(`Could not connect: ${error}`);
 }
