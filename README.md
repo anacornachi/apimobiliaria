@@ -7,7 +7,7 @@ virtualização do banco de dados PostgreSQL.
 ## 🚧 Requerimentos
 
 - Docker 20+
-- Node.js 16+
+- Docker Compose 1.29+
 
 ## 🎲 Rodando localmente
 
